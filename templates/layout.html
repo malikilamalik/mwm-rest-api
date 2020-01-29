@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='uikit.css') }}">
+    <title>MWM's Blog</title>
+</head>
+<body>
+    {%include '_navbar.html'%}
+    
+    <div class="container">
+    {%block body%}{% endblock %}
+    <script src="{{ url_for('static', filename='uikit.js') }}"></script>
+    </div>
+    <footer style="padding-left:10px;position: fixed;left: 0;bottom: 0;
+    width: 100%;text-align: center; padding-bottom: 10px;">defdotpy
+    </footer>
+    </body>
+</html>

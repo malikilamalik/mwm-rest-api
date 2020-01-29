@@ -1,6 +1,11 @@
-from flask import Flask,request,jsonify
+from flask import Flask,request,jsonify,render_template,Markup
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from flask_restful import Resource, Api
+from flask_cors import CORS
+import requests
+import pprint
+import json
 import os
 
 #init app
@@ -10,7 +15,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 #Database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir,'db.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+CORS(app) ## To allow direct AJAX calls
 #Init db
 db = SQLAlchemy(app)
 #Init ma
@@ -75,6 +80,19 @@ def delete_post(id):
     db.session.commit()
     return post_schema.jsonify(post)
 
+
+ 
+@app.route('/', methods=['GET'])
+def home():
+    r = requests.get('https://mwm-rest-api.herokuapp.com/posts')
+    json_a = r.json()
+    return render_template('index.html',tampilposts = json_a,len = len(json_a))
+
+@app.route('/posted/<id>', methods=['GET'])
+def Blog(id):
+    r = requests.get('https://mwm-rest-api.herokuapp.com/post/'+ str(id) +'')
+    json_a = r.json()
+    return render_template('posts.html',tampilkan = json_a,value = Markup(json_a['html']))
 
 #Run Server
 if __name__ == '__main__':
