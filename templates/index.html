@@ -2,13 +2,14 @@
 
 {% block body%}
 <div class="uk-container" style="font-family: 'Roboto', sans-serif;padding-top: 50px;">
-    <img src="https://assets.change.org/photos/3/no/zm/ZInOZmTjrqFiXSX-800x450-noPad.jpg?1544036668">
-    <h2 align="center">HELLO</h2>
+    <img src="https://assets.change.org/photos/3/no/zm/ZInOZmTjrqFiXSX-800x450-noPad.jpg?1544036668" style="border-radius: 8px;">
+    <h2 style="padding-right: 230px;" class="uk-position-center-right">HELLO</h2>
   </div>
-<div style="padding-top: 80px;">
+<div style="padding-top: 80px; ">
+<div class="uk-text-center" uk-grid>
 {%for i in range(0, len)%}
-<div className="uk-container" align = "center" style="padding-top: 10px;">
-    <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+    <div className="uk-container" align = "center" style="padding-top: 10px;">
+    <div class="uk-card uk-card-default uk-card-body">
         <a href="posted/{{tampilposts[i]['id']}}"> 
       <h3 class="uk-card-title">{{tampilposts[i]['title']}}</h3>
       <p>Created @ : {{tampilposts[i]['createDate']}} | Author : defdotpy</p>
@@ -16,4 +17,6 @@
   </div>
 </a>
   {%endfor%} 
-{% endblock%}</div>
+</div>
+{% endblock%}
+</div>

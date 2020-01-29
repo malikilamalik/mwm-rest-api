@@ -1,0 +1,24 @@
+body {
+    animation: colorchange 50s; /* animation-name followed by duration in seconds*/
+       /* you could also use milliseconds (ms) or something like 2.5s */
+    -webkit-animation: colorchange 50s; /* Chrome and Safari */
+    max: 100%;
+  }
+
+  @keyframes colorchange
+  {
+    0%   {background: tan;}
+    25%  {background: yellow;}
+    50%  {background: orange;}
+    75%  {background: pink;}
+    100% {background: thistle;}
+  }
+
+  @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+  {
+    0%   {background: tan;}
+    25%  {background: yellow;}
+    50%  {background: orange;}
+    75%  {background: pink;}
+    100% {background: thistle;}
+  }
